@@ -51,7 +51,29 @@ Each directory is independent and contains its own implemented version of the ke
 	svn co https://svn.code.sf.net/p/mc-fastflow/code/ $HOME/fastflow
 
 
-# How to Compile 
+# How to Compile - Cmake (currently only NPB-SER)
+
+1. Create Build directory
+
+	```bash
+	mkdir build && cd build
+	```
+
+2. Call Cmake Command with Class definition
+
+	```bash
+	cmake .. -DCLASS=S
+	# cmake .. -DCLASS=A
+	```
+
+3. Run make (build all kernels):
+
+	```bash
+	make
+	```
+
+
+# How to Compile (Make)
 
 Enter the directory from the version desired and execute:
 
