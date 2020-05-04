@@ -14,8 +14,7 @@
 --------------------------------------------------------------------*/
 
 #include <iostream>
-#include "npb-CPP.hpp"
-
+#include "../common/npb-CPP.hpp"
 /* global variables */
 #include "global.hpp"
 
