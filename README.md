@@ -56,6 +56,7 @@ Each directory is independent and contains its own implemented version of the ke
 1. Create Build directory
 
 	```bash
+	cd NPB-SER
 	mkdir build && cd build
 	```
 
