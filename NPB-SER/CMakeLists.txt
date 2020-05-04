@@ -27,8 +27,8 @@ set(kernels
     CG
     EP
     FT
-    # IS
-    # MG
+    IS
+    MG
 )
 
 foreach(kernel IN LISTS kernels)

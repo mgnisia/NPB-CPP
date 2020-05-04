@@ -1,12 +1,5 @@
 # CMakeLists for CG
 # Parameter Settings
-#
-if (CLASS)
-    message("Class ${CLASS} defined")
-else()
-    message(FATAL_ERROR "Class is not defined")
-endif ()
-
 set(RCOND 1.0e-1)
 if (CLASS STREQUAL "S")
     set(NA 1400)
