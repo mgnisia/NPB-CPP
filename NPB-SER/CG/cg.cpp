@@ -28,7 +28,7 @@ c---------------------------------------------------------------------
 
 #include <iostream>
 #include "npbparams.hpp"
-#include "npb-CPP.hpp"
+#include "../common/npb-CPP.hpp"
 
 #define	NZ	NA*(NONZER+1)*(NONZER+1)+NA*(NONZER+2)
 
