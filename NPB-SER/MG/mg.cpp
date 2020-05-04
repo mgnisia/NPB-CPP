@@ -16,7 +16,7 @@
 --------------------------------------------------------------------*/
 
 #include <iostream>
-#include "npb-CPP.hpp"
+#include "../common/npb-CPP.hpp"
 
 #include "globals.hpp"
 

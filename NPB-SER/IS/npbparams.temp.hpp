@@ -1,13 +1,7 @@
 /* CLASS = @CLASS@
  * Definition with configure_file function of cmake
  * */
-#define	NX	@NX@
-#define	NY	@NY@
-#define	NZ	@NZ@
-#define	MAXDIM	@MAXDIM@
-#define	NITER_DEFAULT	@NITER_DEFAULT@
-#define	NTOTAL	@NTOTAL@
-#define	CONVERTDOUBLE	FALSE
+#cmakedefine CLASS '@CLASS@'
 #define COMPILETIME "@COMPILETIME@"
 #define NPBVERSION "4.0"
 #define CS1 "g++ -std=c++14"
