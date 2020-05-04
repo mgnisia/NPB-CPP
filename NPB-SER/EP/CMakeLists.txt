@@ -1,0 +1,23 @@
+# CMakeLists for EP
+# set(CLASS "S")
+if (CLASS STREQUAL "S")
+        set(M 24)
+    elseif(CLASS STREQUAL "W")
+        set(M 25)
+    elseif(CLASS STREQUAL "A")
+        set(M 28)
+    elseif(CLASS STREQUAL "B")
+        set(M 30)
+    elseif(CLASS STREQUAL "C")
+        set(M 32)
+endif ()
+
+if (CLASS)
+    message("Class ${CLASS} defined")
+    else()
+    message(FATAL_ERROR "Class is not defined")
+endif ()
+configure_file(npbparams.temp.hpp npbparams.hpp)
+add_executable(EP ep.cpp)
+# Link with library common
+target_link_libraries(EP common)
