@@ -16,7 +16,8 @@
 
 #include "npbparams.hpp"
 #include <iostream>
-#include <../common/npb-CPP.hpp>
+#include "../common/npb-CPP.hpp"
+
 
 /* parameters */
 #define	MK		16
@@ -47,7 +48,8 @@ c   numbers.  MK can be set for convenience on a given system, since it does
 c   not affect the results.
 */
 int main(int argc, char **argv) {
-    double Mops, t1, sx, sy, tm, an, gc;
+
+   double Mops, t1, sx, sy, tm, an, gc;
     double dum[3] = { 1.0, 1.0, 1.0 };
     int np,i, k, nit, k_offset, j;
     boolean verified;
