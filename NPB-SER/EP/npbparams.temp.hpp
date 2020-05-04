@@ -1,4 +1,4 @@
-/* CLASS = A */
+/* CLASS = @CLASS@ */
 /*
 c  This file is generated automatically by the setparams utility.
 c  It sets the number of processors and the class_npb of the NPB
