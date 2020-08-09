@@ -14,7 +14,7 @@
 --------------------------------------------------------------------*/
 
 #include <iostream>
-#include "npb-CPP.hpp"
+#include "../common/npb-CPP.hpp"
 
 /* global variables */
 #include "global.hpp"
@@ -185,8 +185,7 @@ int main(int argc, char **argv) {
     } else {
         mflops = 0.0;
     }
-    c_print_results((char*)"FT", class_npb, NX, NY, NZ, niter, nthreads, total_time, mflops, (char*)"          floating point", verified, 
-    (char*)NPBVERSION, (char*)COMPILETIME, (char*)CS1, (char*)CS2, (char*)CS3, (char*)CS4, (char*)CS5, (char*)CS6, (char*)CS7);
+    c_print_results((char*)"FT", class_npb, NX, NY, NZ, niter, nthreads, total_time, mflops, (char*)"          floating point", verified);
     if (TIMERS_ENABLED == TRUE) print_timers();
 
     return 0;

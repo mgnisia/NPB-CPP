@@ -29,7 +29,7 @@ endif ()
 set(kernels
     CG
     EP
-    # FT
+    FT
     IS
     MG
 )

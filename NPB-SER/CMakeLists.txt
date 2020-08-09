@@ -27,11 +27,11 @@ endif ()
 
 # Kernels
 set(kernels
-    # CG
+    CG
     EP
-    # FT
-    #IS
-    # MG
+    FT
+    IS
+    MG
 )
 
 foreach(kernel IN LISTS kernels)
