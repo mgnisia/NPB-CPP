@@ -303,7 +303,7 @@ int main(int argc, char **argv)
 	} else {
 		mflops = 0.0;
 	}
-	c_print_results((char*)"CG", class_npb, NA, 0, 0, NITER, t, mflops, (char*)"          floating point",	verified, (char*)NPBVERSION, (char*)COMPILETIME, (char*)CS1, (char*)CS2, (char*)CS3, (char*)CS4, (char*)CS5, (char*)CS6, (char*)CS7);
+	c_print_results((char*)"CG", class_npb, NA, 0, 0, NITER, t, mflops, (char*)"          floating point",	verified);
 	return 0;
 }
 

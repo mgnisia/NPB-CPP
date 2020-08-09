@@ -27,7 +27,7 @@ endif ()
 
 # Kernels
 set(kernels
-    # CG
+    CG
     EP
     FT
     IS
