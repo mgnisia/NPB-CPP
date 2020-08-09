@@ -27,12 +27,14 @@ endif ()
 
 # Kernels
 set(kernels
-    # CG
+    CG
     EP
     # FT
-    #IS
-    # MG
+    IS
+    MG
 )
+
+find_package(OpenMP)
 
 foreach(kernel IN LISTS kernels)
     string(TOLOWER ${kernel} kernel_lower)
@@ -47,8 +49,11 @@ foreach(kernel IN LISTS kernels)
     add_dependencies(${kernel_lower}.${CLASS} ${kernel}_header)
     target_compile_options(${kernel_lower}.${CLASS} PUBLIC -Ofast)
 
-    # Link with library tbb
+    # Link with library common
     target_link_libraries(${kernel_lower}.${CLASS} PUBLIC common)
+    if(OpenMP_CXX_FOUND)
+        target_link_libraries(${kernel_lower}.${CLASS} PUBLIC OpenMP::OpenMP_CXX)
+    endif()
 
 endforeach()
 

@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <cstdio>
 
-void c_print_results( char   *name, char   class_npb, int    n1, int n2, int n3, int niter, double t,
+void c_print_results( char   *name, char   class_npb, int    n1, int n2, int n3, int niter, int nthreads, double t,
   double mops, char   *optype, int    passed_verification)
 {
 
@@ -18,6 +18,8 @@ void c_print_results( char   *name, char   class_npb, int    n1, int n2, int n3,
         printf( " Size            =              %3dx%3dx%3d\n", n1,n2,n3 );
 
     printf( " Iterations      =             %12d\n", niter );
+
+    printf( " Threads         =             %12d\n", nthreads );
  
     printf( " Time in seconds =             %12.2f\n", t );
 

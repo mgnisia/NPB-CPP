@@ -69,7 +69,6 @@ void write_cg_info(FILE *fp, char class_npb);
 void write_ft_info(FILE *fp, char class_npb);
 void write_ep_info(FILE *fp, char class_npb);
 void write_is_info(FILE *fp, char class_npb);
-void write_compiler_info(int type, FILE *fp);
 void write_convertdouble_info(int type, FILE *fp);
 void check_line(char *line, char *label, char *val);
 int  check_include_line(char *line, char *filename);
@@ -179,7 +178,8 @@ void check_info(int type, char class_npb)
       class_npb != 'B' && 
       class_npb != 'R' && 
       class_npb != 'W' && 
-      class_npb != 'C') {
+      class_npb != 'C' && 
+      class_npb != 'D') {
     printf("setparams: Unknown benchmark class_npb %c\n", class_npb); 
     printf("setparams: Allowed classes are \"S\", \"A\", \"B\" and \"C\"\n");
     exit(1);
@@ -347,7 +347,6 @@ c  in this directory. Do not modify it by hand.\n\
     exit(1);
   }
   write_convertdouble_info(type, fp);
-  write_compiler_info(type, fp);
   fclose(fp);
   return;
 }
@@ -595,6 +594,8 @@ void write_ep_info(FILE *fp, char class_npb)
   else if (class_npb == 'A') { m = 28; }
   else if (class_npb == 'B') { m = 30; }
   else if (class_npb == 'C') { m = 32; }
+  else if (class_npb == 'D') { m = 36; }
+  else if (class_npb == 'E') { m = 40; }
   else {
     printf("setparams: Internal error: invalid class_npb type %c\n", class_npb);
     exit(1);
@@ -620,101 +621,7 @@ void write_ep_info(FILE *fp, char class_npb)
 #define VERBOSE
 #define LL 400
 #include <stdio.h>
-#define DEFFILE "../config/make.def"
 #define DEFAULT_MESSAGE "(none)"
-void write_compiler_info(int type, FILE *fp)
-{
-  FILE *deffile;
-  char line[LL];
-  char f77[LL], flink[LL], f_lib[LL], f_inc[LL], fflags[LL], flinkflags[LL];
-  char compiletime[LL], randfile[LL];
-  char cc[LL], cflags[LL], clink[LL], clinkflags[LL],
-       c_lib[LL], c_inc[LL];
-  struct tm *tmp;
-  time_t t;
-  deffile = fopen(DEFFILE, "r");
-  if (deffile == NULL) {
-    printf("\n\
-setparams: File %s doesn't exist. To build the NAS benchmarks\n\
-           you need to create is according to the instructions\n\
-           in the README in the main directory and comments in \n\
-           the file config/make.def.template\n", DEFFILE);
-    exit(1);
-  }
-  strcpy(f77, DEFAULT_MESSAGE);
-  strcpy(flink, DEFAULT_MESSAGE);
-  strcpy(f_lib, DEFAULT_MESSAGE);
-  strcpy(f_inc, DEFAULT_MESSAGE);
-  strcpy(fflags, DEFAULT_MESSAGE);
-  strcpy(flinkflags, DEFAULT_MESSAGE);
-  strcpy(randfile, DEFAULT_MESSAGE);
-  strcpy(cc, DEFAULT_MESSAGE);
-  strcpy(cflags, DEFAULT_MESSAGE);
-  strcpy(clink, DEFAULT_MESSAGE);
-  strcpy(clinkflags, DEFAULT_MESSAGE);
-  strcpy(c_lib, DEFAULT_MESSAGE);
-  strcpy(c_inc, DEFAULT_MESSAGE);
-
-  while (fgets(line, LL, deffile) != NULL) {
-    if (*line == '#') continue;
-    /* yes, this is inefficient. but it's simple! */
-    check_line(line, (char*)"F77", f77);
-    check_line(line, (char*)"FLINK", flink);
-    check_line(line, (char*)"F_LIB", f_lib);
-    check_line(line, (char*)"F_INC", f_inc);
-    check_line(line, (char*)"FFLAGS", fflags);
-    check_line(line, (char*)"FLINKFLAGS", flinkflags);
-    check_line(line, (char*)"RAND", randfile);
-    check_line(line, (char*)"CC", cc);
-    check_line(line, (char*)"CFLAGS", cflags);
-    check_line(line, (char*)"CLINK", clink);
-    check_line(line, (char*)"CLINKFLAGS", clinkflags);
-    check_line(line, (char*)"C_LIB",c_lib);
-    check_line(line, (char*)"C_INC", c_inc);
-  }
-
-  
-  (void) time(&t);
-  tmp = localtime(&t);
-  (void) strftime(compiletime, (size_t)LL, "%d %b %Y", tmp);
-
-
-  switch(type) {
-      case FT:
-      case SP:
-      case BT:
-      case MG:
-      case LU:
-      case EP:
-      case CG:
-          put_def_string(fp, (char*)"COMPILETIME", compiletime);
-          put_def_string(fp, (char*)"NPBVERSION", (char*)VERSION);
-          put_def_string(fp, (char*)"CS1", cc);
-          put_def_string(fp, (char*)"CS2", clink);
-          put_def_string(fp, (char*)"CS3", c_lib);
-          put_def_string(fp, (char*)"CS4", c_inc);
-          put_def_string(fp, (char*)"CS5", cflags);
-          put_def_string(fp, (char*)"CS6", clinkflags);
-	  put_def_string(fp, (char*)"CS7", randfile);
-          break;
-      case IS:
-      case DC:
-          put_def_string(fp, (char*)"COMPILETIME", compiletime);
-          put_def_string(fp, (char*)"NPBVERSION", (char*)VERSION);
-          put_def_string(fp, (char*)"CC", cc);
-          put_def_string(fp, (char*)"CFLAGS", cflags);
-          put_def_string(fp, (char*)"CLINK", clink);
-          put_def_string(fp, (char*)"CLINKFLAGS", clinkflags);
-          put_def_string(fp, (char*)"C_LIB", c_lib);
-          put_def_string(fp, (char*)"C_INC", c_inc);
-          break;
-      default:
-          printf("setparams: (Internal error): Unknown benchmark type %d\n", 
-                                                                         type);
-          exit(1);
-  }
-
-}
 
 void check_line(char *line, char *label, char *val)
 {

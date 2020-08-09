@@ -220,8 +220,7 @@ void full_verify( void );
                       char   *cflags,
                       char   *clinkflags );*/
 void c_print_results( char   *name, char   class_npb, int    n1, int n2, int n3, int niter, int  nthreads, double t,
-                      double mops, char   *optype, int    passed_verification, char   *npbversion, char   *compiletime, char   *cc,
-                      char   *clink, char   *c_lib, char   *c_inc, char   *cflags, char   *clinkflags, char   *rand);
+                      double mops, char   *optype, int    passed_verification);
 
 void    timer_clear( int n );
 void    timer_start( int n );
@@ -951,8 +950,7 @@ int main( int argc, char **argv )
     /timecounter/1000000., "keys ranked", passed_verification, NPBVERSION, COMPILETIME, CC, CLINK, C_LIB, C_INC,
     CFLAGS, CLINKFLAGS );*/
     c_print_results( (char*)"IS", CLASS, TOTAL_KEYS, 0, 0, MAX_ITERATIONS, nthreads, timecounter,
-                     ((double) (MAX_ITERATIONS*TOTAL_KEYS))/timecounter/1000000.0, (char*)"keys ranked", passed_verification,
-                     (char*)NPBVERSION, (char*)COMPILETIME, (char*)CC, (char*)CLINK, (char*)C_LIB, (char*)C_INC, (char*)CFLAGS, (char*)CLINKFLAGS, (char*)"randlc");
+                     ((double) (MAX_ITERATIONS*TOTAL_KEYS))/timecounter/1000000.0, (char*)"keys ranked", passed_verification);
 
     /*  Print additional timers  */
     if (timer_on) {

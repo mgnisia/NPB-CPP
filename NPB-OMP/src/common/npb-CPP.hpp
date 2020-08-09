@@ -32,7 +32,4 @@ extern double timer_read(int);
 
 extern void c_print_results(char *name, char class_npb, int n1, int n2,
 			    int n3, int niter, int nthreads, double t,
-			    double mops, char *optype, int passed_verification,
-			    char *npbversion, char *compiletime, char *cc,
-			    char *clink, char *c_lib, char *c_inc,
-			    char *cflags, char *clinkflags, char *rand);
+			    double mops, char *optype, int passed_verification);

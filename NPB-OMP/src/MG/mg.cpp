@@ -16,7 +16,7 @@
 --------------------------------------------------------------------*/
 
 #include <iostream>
-#include "npb-CPP.hpp"
+#include "../common/npb-CPP.hpp"
 
 #include "globals.hpp"
 
@@ -323,7 +323,7 @@ int main(int argc, char *argv[]) {
     }
 
     c_print_results((char*)"MG", class_npb, nx[lt], ny[lt], nz[lt], nit, nthreads, t, mflops, (char*)"          floating point", 
-		    verified, (char*)NPBVERSION, (char*)COMPILETIME, (char*)CS1, (char*)CS2, (char*)CS3, (char*)CS4, (char*)CS5, (char*)CS6, (char*)CS7);
+		    verified);
     return 0;
 }
 

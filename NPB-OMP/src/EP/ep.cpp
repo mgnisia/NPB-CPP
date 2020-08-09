@@ -18,7 +18,7 @@
 
 #include "npbparams.hpp"
 #include <iostream>
-#include <../common/npb-CPP.hpp>
+#include "../common/npb-CPP.hpp"
 
 /* parameters */
 #define	MK		16
@@ -238,7 +238,7 @@ int main(int argc, char **argv) {
     }
 
     c_print_results((char*)"EP", CLASS, M+1, 0, 0, nit, nthreads, tm, Mops, (char*)"Random numbers generated",
-                    verified, (char*)NPBVERSION, (char*)COMPILETIME, (char*)CS1, (char*)CS2, (char*)CS3, (char*)CS4, (char*)CS5, (char*)CS6, (char*)CS7);
+                    verified);
 
     if (TIMERS_ENABLED == TRUE) {
         printf("Total time:     %f", timer_read(1));
